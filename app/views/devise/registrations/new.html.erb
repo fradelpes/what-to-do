@@ -1,25 +1,73 @@
-<h2>Sign up</h2>
+<div class="signup-page d-flex align-items-center">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-5 col-md-7 col-sm-10">
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+        <div class="card signup-card shadow-lg border-0">
+          <div class="card-body p-5">
 
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" }%>
-    <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
+            <div class="text-center mb-4">
+              <h2 class="text-blue fw-bold mb-2">Create Account</h2>
+              <p class="text-muted">Join us today 🚀</p>
+            </div>
+
+            <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+              <%= f.error_notification %>
+
+              <div class="form-inputs">
+
+                <div class="mb-3">
+                  <%= f.input :email,
+                      required: true,
+                      autofocus: true,
+                      label: false,
+                      input_html: {
+                        class: "form-control form-control-lg rounded-3",
+                        placeholder: "Email address",
+                        autocomplete: "email"
+                      } %>
+                </div>
+
+                <div class="mb-3">
+                  <%= f.input :password,
+                      required: true,
+                      label: false,
+                      hint: (@minimum_password_length ? "#{@minimum_password_length} characters minimum" : nil),
+                      input_html: {
+                        class: "form-control form-control-lg rounded-3",
+                        placeholder: "Password",
+                        autocomplete: "new-password"
+                      } %>
+                </div>
+
+                <div class="mb-4">
+                  <%= f.input :password_confirmation,
+                      required: true,
+                      label: false,
+                      input_html: {
+                        class: "form-control form-control-lg rounded-3",
+                        placeholder: "Confirm password",
+                        autocomplete: "new-password"
+                      } %>
+                </div>
+
+              </div>
+
+              <div class="d-grid">
+                <%= f.button :submit, "Sign up",
+                    class: "btn btn-custom btn-lg rounded-3 signup-btn" %>
+              </div>
+
+            <% end %>
+
+            <div class="text-blue text-center mt-4">
+              <%= render "devise/shared/links" %>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
