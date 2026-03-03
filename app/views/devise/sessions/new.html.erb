@@ -1,20 +1,69 @@
-<h2>Log in</h2>
+<div class="signup-page d-flex align-items-center">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-5 col-md-7 col-sm-10">
 
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: false,
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
-    <%= f.input :password,
-                required: false,
-                input_html: { autocomplete: "current-password" } %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+        <div class="card signup-card shadow-lg border-0">
+          <div class="card-body p-5">
+
+            <div class="text-center mb-4">
+              <h2 class="text-blue fw-bold mb-2">Welcome Back</h2>
+              <p class="text-muted text-blue">Log in to your account 👋</p>
+            </div>
+
+            <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+              <div class="form-inputs">
+
+                <div class="mb-3">
+                  <%= f.input :email,
+                      required: false,
+                      autofocus: true,
+                      label: false,
+                      input_html: {
+                        class: "form-control form-control-lg rounded-3",
+                        placeholder: "Email address",
+                        autocomplete: "email"
+                      } %>
+                </div>
+
+                <div class="mb-3">
+                  <%= f.input :password,
+                      required: false,
+                      label: false,
+                      input_html: {
+                        class: "form-control form-control-lg rounded-3",
+                        placeholder: "Password",
+                        autocomplete: "current-password"
+                      } %>
+                </div>
+
+                <% if devise_mapping.rememberable? %>
+                  <div class="form-check mb-4">
+                    <%= f.input :remember_me,
+                        as: :boolean,
+                        input_html: { class: "form-check-input" },
+                        label_html: { class: "form-check-label" } %>
+                  </div>
+                <% end %>
+
+              </div>
+
+              <div class="d-grid">
+                <%= f.button :submit, "Log in",
+                    class: "btn btn-custom btn-lg rounded-3 signup-btn" %>
+              </div>
+
+            <% end %>
+
+            <div class="text-center mt-4 text-blue ">
+              <%= render "devise/shared/links" %>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
