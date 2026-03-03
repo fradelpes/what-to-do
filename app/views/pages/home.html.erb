@@ -1,2 +1,25 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container-fluid vh-100 d-flex justify-content-center align-items-center bg-primary">
+
+  <div class="text-center text-white w-100" style="max-width: 350px;">
+
+    <!-- Logo -->
+    <%# <%= image_tag "logo.png", alt: "Logo", class: "img-fluid mb-4", style: "width: 90px;" %> %>
+
+    <!-- Titre -->
+    <h1 class="fw-bold mb-3">Ma Super App</h1>
+
+    <!-- Slogan -->
+    <p class="mb-5 opacity-75">
+      Simplifiez votre quotidien en un seul geste.
+    </p>
+
+    <!-- Boutons -->
+    <div class="d-grid gap-3">
+      <%= link_to "Sign Up", class: "btn btn-light btn-lg rounded-4 fw-semibold" %>
+
+      <%= link_to "Log In", class: "btn btn-outline-light btn-lg rounded-4 fw-semibold" %>
+    </div>
+
+  </div>
+
+</div>
