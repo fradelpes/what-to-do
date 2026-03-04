@@ -1,7 +1,6 @@
 <div class="container mt-4">
   <h2>Chat #<%= @chat.id %></h2>
 
-  <!-- Messages -->
   <div class="chat-messages mb-4">
     <% @chat.messages.order(:created_at).each do |message| %>
       <div class="message message-<%= message.role %>">
@@ -11,7 +10,6 @@
     <% end %>
   </div>
 
-  <!-- Formulaire -->
   <%= form_with model: [@chat, Message.new], class: "chat-form" do |f| %>
     <div class="input-group">
       <%= f.text_field :content, placeholder: "Décris ce que tu cherches...", class: "form-control", autofocus: true %>
