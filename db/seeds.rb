@@ -13,39 +13,39 @@ puts "Creating chats and itineraries..."
 
 # --- Helene ---
 chat1 = Chat.create!(title: "Journée à Paris", user: helene)
-itinerary1 = Itinerary.create!(title: "Paris Adventure", user: helene, chat: chat1, budget_max: 500, duration_max: 3)
+itinerary1 = Itinerary.create!(title: "Journée à Paris", user: helene, chat: chat1, budget_max: 500, duration_max: 3)
 chat1.update!(itinerary: itinerary1) # chat has_one itinerary
 
 chat2 = Chat.create!(title: "Escapade Montagnarde", user: helene)
-itinerary2 = Itinerary.create!(title: "Mountain Escape", user: helene, chat: chat2, budget_max: 800, duration_max: 5)
+itinerary2 = Itinerary.create!(title: "Escapade Montagnarde", user: helene, chat: chat2, budget_max: 800, duration_max: 5)
 chat2.update!(itinerary: itinerary2)
 
 # --- Zoe ---
 chat3 = Chat.create!(title: "Découverte de Lyon", user: zoe)
-itinerary3 = Itinerary.create!(title: "Lyon Explorer", user: zoe, chat: chat3, budget_max: 400, duration_max: 2)
+itinerary3 = Itinerary.create!(title: "Découverte de Lyon", user: zoe, chat: chat3, budget_max: 400, duration_max: 2)
 chat3.update!(itinerary: itinerary3)
 
 chat4 = Chat.create!(title: "Week-end Plage", user: zoe)
-itinerary4 = Itinerary.create!(title: "Beach Trip", user: zoe, chat: chat4, budget_max: 600, duration_max: 3)
+itinerary4 = Itinerary.create!(title: "Week-end Plage", user: zoe, chat: chat4, budget_max: 600, duration_max: 3)
 chat4.update!(itinerary: itinerary4)
 
 puts "Creating events..."
 
 # Paris Adventure
-Event.create!(title: "Musée du Louvre", category: "Culture", description: "Visite du musée", location: "Paris", price: 15, duration: 2, itinerary: itinerary1, image_url: "https://example.com/louvre.jpg")
-Event.create!(title: "Tour Eiffel", category: "Monument", description: "Balade au sommet", location: "Paris", price: 25, duration: 1, itinerary: itinerary1, image_url: "https://example.com/eiffel.jpg")
+Event.create!(title: "Musée du Louvre", category: "Culture", description: "Visite du musée", location: "Paris", price: 15, duration: 2, itinerary: itinerary1, image_url: "events/Louvre.jpg")
+Event.create!(title: "Tour Eiffel", category: "Monument", description: "Balade au sommet", location: "Paris", price: 25, duration: 1, itinerary: itinerary1, image_url: "events/Tour_Eiffel.jpg")
 
 # Mountain Escape
-Event.create!(title: "Randonnée Alpes", category: "Outdoor", description: "Montée jusqu'au sommet", location: "Alpes", price: 0, duration: 5, itinerary: itinerary2, image_url: "https://example.com/alps.jpg")
-Event.create!(title: "Dîner refuge", category: "Food", description: "Dîner typique", location: "Alpes", price: 30, duration: 2, itinerary: itinerary2, image_url: "https://example.com/refuge.jpg")
+Event.create!(title: "Randonnée Alpes", category: "Outdoor", description: "Montée jusqu'au sommet", location: "Alpes", price: 0, duration: 5, itinerary: itinerary2, image_url: "events/Alpes.jpg")
+Event.create!(title: "Dîner refuge", category: "Food", description: "Dîner typique", location: "Alpes", price: 30, duration: 2, itinerary: itinerary2, image_url: "events/Refuge.jpg")
 
 # Lyon Explorer
-Event.create!(title: "Vieux Lyon", category: "Culture", description: "Découverte des traboules", location: "Lyon", price: 0, duration: 2, itinerary: itinerary3, image_url: "https://example.com/vieuxlyon.jpg")
-Event.create!(title: "Basilique Fourvière", category: "Monument", description: "Visite panoramique", location: "Lyon", price: 5, duration: 1, itinerary: itinerary3, image_url: "https://example.com/fourviere.jpg")
+Event.create!(title: "Vieux Lyon", category: "Culture", description: "Découverte des traboules", location: "Lyon", price: 0, duration: 2, itinerary: itinerary3, image_url: "events/Lyon.jpg")
+Event.create!(title: "Basilique Fourvière", category: "Monument", description: "Visite panoramique", location: "Lyon", price: 5, duration: 1, itinerary: itinerary3, image_url: "events/Lyon2.jpg")
 
 # Beach Trip
-Event.create!(title: "Plage de Nice", category: "Relax", description: "Journée plage", location: "Nice", price: 0, duration: 3, itinerary: itinerary4, image_url: "https://example.com/nicebeach.jpg")
-Event.create!(title: "Promenade des Anglais", category: "Sightseeing", description: "Balade en bord de mer", location: "Nice", price: 0, duration: 1, itinerary: itinerary4, image_url: "https://example.com/promenade.jpg")
+Event.create!(title: "Plage de Nice", category: "Relax", description: "Journée plage", location: "Nice", price: 0, duration: 3, itinerary: itinerary4, image_url: "events/Mer.jpg")
+Event.create!(title: "Promenade des Anglais", category: "Sightseeing", description: "Balade en bord de mer", location: "Nice", price: 0, duration: 1, itinerary: itinerary4, image_url: "events/Promenade_Anglais.jpg")
 
 puts "Creating messages..."
 

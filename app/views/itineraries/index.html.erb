@@ -1,14 +1,15 @@
-<h1 class="mb-4">Mes Itinéraires</h1>
+<h1 class="mb-4 text-center">Mes parcours</h1>
 
-<div class="row row-cols-1 row-cols-md-3 g-4">
+<div class="row row-cols-1 row-cols-md-3 g-4 mt-8">
   <% @itineraries.each do |itinerary| %>
     <div class="col">
       <div class="card h-100 shadow-sm hover-shadow">
 
         <% if itinerary.events.any? %>
-          <img src="<%= itinerary.events.first.image_url %>"
-               class="card-img-top"
-               alt="<%= itinerary.title %>">
+        <%= image_tag itinerary.events.first.image_url,
+            class: "card-img-top",
+            alt: itinerary.title,
+            style: "height: 200px; object-fit: cover;" %>
         <% end %>
 
         <div class="card-body d-flex flex-column">
@@ -19,16 +20,13 @@
             <%= itinerary.events.map(&:title).join(", ") %>
           </p>
 
-          <p class="text-muted mb-3">
-            Budget max: €<%= itinerary.budget_max %> •
-            Durée max: <%= itinerary.duration_max %> jours
-          </p>
+
 
           <!-- Bouton en bas -->
           <div class="mt-auto">
-            <%= link_to "Voir plus de détails",
+            <%= link_to "Voir plus",
                 itinerary_path(itinerary),
-                class: "btn btn-primary w-100 rounded-pill" %>
+                class: "btn button-custom rounded-4 "%>
           </div>
 
         </div>
