@@ -4,10 +4,6 @@ Rails.application.routes.draw do
 
   resources :chats, only: [:index, :create, :show] do
     resources :messages, only: [:create]
-
-    member do
-      post :generate_itinerary
-    end
   end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
