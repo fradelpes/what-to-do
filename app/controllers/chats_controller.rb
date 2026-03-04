@@ -1,7 +1,8 @@
 class ChatsController < ApplicationController
   def index
-    @chats = Chat.all
+    @chats = Chat.all.order(created_at: :desc)
   end
+
   def create
     @chat = Chat.new(user: current_user)
     if @chat.save
