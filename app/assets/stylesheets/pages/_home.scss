@@ -33,5 +33,19 @@ header {
 
 body{
   padding-bottom: 120px;
-  padding-top: 90px;
+    overflow: hidden;
+
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.background-custom {
+  min-height: 100vh;
+}
+
+.logo-taille {
+  width: 250px;
 }
