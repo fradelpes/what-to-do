@@ -12,7 +12,7 @@
   <%= form_with model: [@chat, Message.new], class: "chat-form" do |f| %>
     <div class="input-group">
       <%= f.text_field :content, placeholder: "Décris ce que tu cherches...", class: "form-control", autofocus: true %>
-      <%= f.submit "Envoyer", class: "btn btn-primary" %>
+      <%= f.submit "Envoyer", class: "btn btn-chat" %>
     </div>
   <% end %>
   <div class="mb-3">

@@ -16,13 +16,13 @@ class ChatsController < ApplicationController
     @chat = Chat.find(params[:id])
   end
 
-  def generate_itinerary
-    @chat = Chat.find(params[:id])
+  # def generate_itinerary
+  #   @chat = Chat.find(params[:id])
 
-    @itinerary = @chat.create_itinerary!(
-      user: current_user,
-      title: "Itinéraire généré"
-    )
-    redirect_to @itinerary
-  end
+  #   @itinerary = @chat.create_itinerary!(
+  #     user: current_user,
+  #     title: "Itinéraire généré"
+  #   )
+  #   redirect_to @itinerary
+  # end
 end
