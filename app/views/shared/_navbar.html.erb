@@ -1,21 +1,20 @@
 <header>
-  <nav class="navbar navbar-expand-lg navbar-custom">
-    <div class="container">
-      <%= link_to root_path, class: "navbar-brand" do %>
-        <%= image_tag "navbar/logo.png", alt: "WhatToDo Logo", height: "80" %>
-        <% end %>
+  <nav class="navbar navbar-custom py-2">
+    <div class="container d-flex justify-content-between align-items-center">
 
-      <div class="ms-auto">
-        <% if user_signed_in? %>
-          <span class="me-3">Coucou 👋 <%= current_user.email %></span>
-          <%= link_to "Se deconnecter", destroy_user_session_path,
-              data: { turbo_method: :delete },
-              class: "btn btn-logout" %>
-        <% else %>
-          <%= link_to "Login", new_user_session_path, class: "btn btn-outline-primary me-2" %>
-          <%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary" %>
-        <% end %>
-      </div>
+      <!-- Logo à gauche (plus grand) -->
+      <%= link_to root_path, class: "navbar-brand p-0" do %>
+        <%= image_tag "navbar/logo.png", alt: "WhatToDo Logo", height: "70" %>
+      <% end %>
+
+      <!-- Bouton de déconnexion (plus petit) -->
+      <% if user_signed_in? %>
+  <%= link_to destroy_user_session_path,
+      data: { turbo_method: :delete },
+      class: "btn btn-logout btn-sm px-2 py-1" do %>
+      <i class="fas fa-sign-out-alt"></i>
+  <% end %>
+<% end %>
     </div>
-</nav>
+  </nav>
 </header>
