@@ -1,6 +1,5 @@
 <div class="container mt-4">
   <h2>Chat #<%= @chat.id %></h2>
-
   <div class="chat-messages mb-4">
     <% @chat.messages.order(:created_at).each do |message| %>
       <div class="message message-<%= message.role %>">

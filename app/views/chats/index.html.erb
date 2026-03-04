@@ -1,0 +1,26 @@
+<div class="container mt-4">
+  <h2>Mes chats</h2>
+
+  <% if @chats.any? %>
+    <ul class="list-group mt-3">
+      <% @chats.each do |chat| %>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <div>
+            <strong>Chat #<%= chat.id %></strong>
+            <br>
+            <small class="text-muted">
+              Créé le <%= chat.created_at.strftime("%d/%m/%Y à %H:%M") %>
+            </small>
+          </div>
+
+          <div>
+            <%= link_to "Ouvrir", chat_path(chat), class: "btn btn-sm btn-primary" %>
+          </div>
+
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p class="mt-3">Tu n’as encore aucune conversation.</p>
+  <% end %>
+</div>
