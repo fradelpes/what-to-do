@@ -1,6 +1,6 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -9,4 +9,15 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+}
+
+.btn-logout{
+  background-color:#004aad;
+  color: #ffde59;
+  border-radius: 10px;
+}
+
+.btn-logout:hover {
+  background-color: #ffde59;
+  color: #004aad;
 }
