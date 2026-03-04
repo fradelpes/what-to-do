@@ -1,0 +1,17 @@
+.btn-footer {
+  color: #004aad;
+
+  padding: 0.8rem 1.5rem;  /* moins de hauteur et largeur */
+  font-size: 1.5rem;       /* icône plus petite */
+  border-radius: 0.5rem;   /* coins un peu arrondis */
+}
+
+
+
+.btn-footer:hover {
+  color: #ffde59;
+}
+
+.btn-footer:active {
+  background-color: #084298;
+}
