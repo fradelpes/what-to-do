@@ -20,15 +20,11 @@
             <%= itinerary.events.map(&:title).join(", ") %>
           </p>
 
-
-
-          <!-- Bouton en bas -->
           <div class="mt-auto">
             <%= link_to "Voir plus",
                 itinerary_path(itinerary),
                 class: "btn button-custom rounded-4 "%>
           </div>
-
         </div>
       </div>
     </div>
