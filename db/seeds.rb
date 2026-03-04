@@ -7,7 +7,7 @@ User.destroy_all
 
 puts "Creating users..."
 helene = User.create!(email: "helene@gmail.com", password: "123456")
-zoe    = User.create!(email: "zoe@gmail.com", password: "1234567")
+zoe = User.create!(email: "zoe@gmail.com", password: "1234567")
 
 puts "Creating chats and itineraries..."
 
