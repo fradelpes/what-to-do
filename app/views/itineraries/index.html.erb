@@ -13,7 +13,10 @@
                     class: "event-card__image",
                     alt: itinerary.title %>
               <% else %>
-                <div class="event-card__placeholder">Image indisponible</div>
+                <%= image_tag "itineraries/beach.jpg",
+                    class: "event-card__image",
+                    alt: itinerary.title %>
+                <%# <div class="event-card__placeholder">Image indisponible</div> %>
               <% end %>
             </div>
 
