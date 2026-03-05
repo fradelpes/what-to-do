@@ -12,7 +12,10 @@
                     class: "event-card__image",
                     alt: event.title %>
               <% else %>
-                <div class="event-card__placeholder">Image indisponible</div>
+                <%= image_tag "itineraries/mountains.jpg",
+                    class: "event-card__image",
+                    alt: event.title %>
+                <%# <div class="event-card__placeholder">Image indisponible</div> %>
               <% end %>
             </div>
 
