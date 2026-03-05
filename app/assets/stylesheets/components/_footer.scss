@@ -8,6 +8,14 @@
 
 }
 
+footer.fixed-bottom {
+  z-index: 1030;
+}
+
+body {
+  padding-bottom: 70px;
+}
+
 .footer-container {
   width: 100%;
   display: flex;
