@@ -2,13 +2,143 @@
   background-color: #004aad;
 }
 
-.btn-back {
-  background-color: #004aad;
-  color: white;
-  border-radius: 10px;
+.itinerary-show__title {
+  color: #004aad;
+  font-size: clamp(1.4rem, 4.5vw, 2rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-inline: auto;
+  max-width: 22ch;
 }
 
-.btn-back:hover {
-  background-color: #ffde59;
-  color: #004aad;
+.event-card {
+  border: 1px solid #e6edf7;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(20, 32, 51, 0.08);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.event-card__media {
+  background-color: #e9f1ff;
+  height: 180px;
+}
+
+.event-card__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.event-card__placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #5f6f86;
+  font-size: 0.9rem;
+}
+
+.event-card .card-title {
+  color: #142033;
+  font-size: 1rem;
+  line-height: 1.3;
+  word-break: break-word;
+}
+
+.event-card__title {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.event-card .card-body {
+  padding: 0.9rem;
+}
+
+.event-card__badge {
+  font-size: 0.72rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.event-card__description {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  min-height: 2.8em;
+}
+
+.event-card__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.event-chip {
+  background: #f1f5ff;
+  border: 1px solid #d9e5ff;
+  border-radius: 999px;
+  color: #3d4e66;
+  font-size: 0.78rem;
+  font-weight: 500;
+  line-height: 1;
+  padding: 0.4rem 0.55rem;
+}
+
+.event-chip--highlight {
+  background: #fff7dc;
+  border-color: #ffe7a0;
+  color: #705500;
+}
+
+.event-card:active {
+  box-shadow: 0 14px 30px rgba(20, 32, 51, 0.14);
+  transform: translateY(-1px);
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .event-card:active {
+    box-shadow: 0 14px 30px rgba(20, 32, 51, 0.14);
+    transform: translateY(-1px);
+  }
+}
+
+@media (max-width: 767.98px) {
+  .itineraries-grid {
+    --bs-gutter-x: 0.7rem;
+    --bs-gutter-y: 0.7rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .event-card__media {
+    height: 220px;
+  }
+
+  .event-card .card-body {
+    padding: 1rem;
+  }
+
+  .event-card .card-title {
+    font-size: 1.1rem;
+  }
+
+  .event-card__description {
+    font-size: 0.95rem;
+  }
+
+  .event-chip {
+    font-size: 0.82rem;
+  }
+
+  .event-card:hover {
+    box-shadow: 0 14px 30px rgba(20, 32, 51, 0.14);
+    transform: translateY(-2px);
+  }
 }

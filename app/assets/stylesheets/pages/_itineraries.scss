@@ -1,10 +1,22 @@
-
-.button-custom{
-  background-color:#004aad;
-  color: white;
+.itineraries-index__title {
+  color: #004aad;
+  font-size: clamp(1.4rem, 4.5vw, 2rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-inline: auto;
+  max-width: 22ch;
 }
 
-.button-custom:hover {
+.itinerary-card__cta {
+  background-color: #004aad;
+  border: 1px solid #004aad;
+  border-radius: 10px;
+  color: #fff;
+  font-weight: 600;
+}
+
+.itinerary-card__cta:hover {
   background-color: #ffde59;
+  border-color: #ffde59;
   color: #004aad;
 }
