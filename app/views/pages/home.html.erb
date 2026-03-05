@@ -1,26 +1,24 @@
-<div class="background-custom container-fluid vh-100 d-flex flex-column">
-  <!-- Barre supérieure avec le bouton Sign Out -->
-  <div class="d-flex justify-content-end p-3">
-    <%= button_to "Sign Out", destroy_user_session_path,
-        method: :delete,
-        class: "btn btn-outline-light" %>
-  </div>
+<div class="home-hero d-flex flex-column align-items-center justify-content-center text-center text-white">
+  <%= image_tag "navbar/logo.png",
+      alt: "WhatToDo Logo",
+      class: "home-logo mb-5" %>
 
-  <!-- Contenu central -->
-  <div class="d-flex justify-content-center align-items-start pt-5 flex-grow-1">
-    <div class="text-center text-white w-100" style="max-width: 350px;">
-      <%= image_tag "navbar/logo.png",
-          alt: "WhatToDo Logo",
-          class: "logo-taille mb-4" %>
+  <h1 class="home-title mb-2">Tu as du temps ?</h1>
+  <p class="home-tagline mb-0">On a le plan.</p>
 
+<<<<<<< HEAD
       <p class="mb-5 opacity-75">
         Tu as du temps ? On a le plan !
       </p>
 
       <div class="d-grid gap-3">
         <%= button_to "Start a chat", chats_path,
-            class: "btn button-custom fw-semibold" %>
+            class: "btn button-home-custom fw-semibold" %>
       </div>
     </div>
   </div>
+=======
+  <%= button_to "Commence ton aventure", chats_path,
+      class: "btn home-cta mt-5" %>
+>>>>>>> 927f67af082ed8bced932a46cc1df5c2f19a0471
 </div>

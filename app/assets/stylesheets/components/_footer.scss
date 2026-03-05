@@ -1,5 +1,24 @@
+.footer-custom {
+  min-height: 90px;
+  padding: 15px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+    box-shadow: none;
 
+}
 
+.footer-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.btn-footer {
+  color: #004aad;
+  padding: 12px 20px;
+  font-size: 20px;
+}
 
 .btn-footer:hover {
   color: #ffde59;
@@ -9,16 +28,6 @@
   background-color: #084298;
 }
 
-.footer-custom {
-  padding: 6px 0;
-}
-
-.btn-footer {
-    color: #004aad;
-  padding: 4px 8px;
-  font-size: 16px;
-}
-
 footer i {
-  font-size: 18px;
+  font-size: 22px;
 }
