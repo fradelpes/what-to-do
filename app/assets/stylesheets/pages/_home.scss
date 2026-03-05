@@ -5,7 +5,27 @@
 }
 
 .home-logo {
-  width: 160px;
+  width: 220px;
+  margin-top: -60px;
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-14px) rotate(2deg);
+  }
+  50% {
+    transform: translateY(0) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-6px) rotate(-1.5deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
 }
 
 .home-title {
@@ -27,8 +47,8 @@
   font-weight: 700;
   border: none;
   border-radius: 50px;
-  padding: 12px 32px;
-  font-size: 1rem;
+  padding: 14px 40px;
+  font-size: 1.1rem;
 
   &:hover,
   &:focus {
@@ -39,7 +59,7 @@
 
 @media (min-width: 768px) {
   .home-logo {
-    width: 200px;
+    width: 280px;
   }
 
   .home-title {
