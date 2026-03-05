@@ -1,8 +1,16 @@
-<div class="container mt-4">
-  <h2>Chat #<%= @chat.id %></h2>
-  <div class="chat-messages mb-4">
+<div class="chat-container">
+
+  <% if @chat.messages.empty? %>
+    <div class="chat-empty">
+      <h1>Décris ce que tu cherches</h1>
+    </div>
+  <% end %>
+
+  <div class="chat-messages">
     <% @chat.messages.order(:created_at).each do |message| %>
-      <div class="message message-<%= message.role %>">
+
+      <div class="message <%= message.role %>">
+        <div class="message-bubble">
         <strong><%= message.role == "user" ? "Vous" : "Assistant" %></strong>
 
         <% if message.content.include?("ID_ITINERARY:") %>
@@ -12,17 +20,23 @@
         <% else %>
           <p><%= message.content %></p>
         <% end %>
+        </div>
       </div>
+
     <% end %>
   </div>
 
+</div>
+
+<div class="chat-input">
   <%= form_with model: [@chat, Message.new], class: "chat-form" do |f| %>
-    <div class="input-group">
-      <%= f.text_field :content, placeholder: "Décris ce que tu cherches...", class: "form-control", autofocus: true %>
-      <%= f.submit "Envoyer", class: "btn btn-chat" %>
-    </div>
+
+    <%= f.text_field :content,
+      placeholder: "Poser une question",
+      class: "chat-text-input",
+      autocomplete: "off" %>
+
+    <%= f.submit "Envoyer", class: "send-button" %>
+
   <% end %>
-  <div class="mb-3">
-  <%= link_to "Retour", itineraries_path, class: "btn btn-chat mt-3" %>
-  </div>
 </div>
