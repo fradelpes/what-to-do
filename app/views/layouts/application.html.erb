@@ -23,15 +23,15 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body class="d-flex flex-column min-vh-100">
 
-  <div class="container">
+  <div class="container flex-grow-1">
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
     <%= yield %>
-    <%= render "shared/footer" %>
   </div>
+  <%= render "shared/footer" %>
 
 </body>
 </html>
