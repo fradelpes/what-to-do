@@ -5,6 +5,7 @@
     <div class="col">
       <div class="card h-100 shadow-sm hover-shadow">
 
+<<<<<<< HEAD
         <% if itinerary.events.any? && itinerary.events.first.image_url.present? %>
   <%= image_tag itinerary.events.first.image_url,
       class: "card-img-top",
@@ -15,6 +16,21 @@
     <span class="text-muted">Pas d'image</span>
   </div>
 <% end %>
+=======
+        <% if itinerary.events.any? %>
+          <% if itinerary.events.first.image_url.present? %>
+            <%= image_tag itinerary.events.first.image_url,
+                class: "card-img-top",
+                alt: itinerary.title,
+                style: "height: 200px; object-fit: cover;" %>
+            <% else %>
+              <%= image_tag "events/Alpes.jpg",
+                class: "card-img-top",
+                alt: itinerary.title,
+                style: "height: 200px; object-fit: cover;" %>
+            <% end %>
+        <% end %>
+>>>>>>> master
 
         <div class="card-body d-flex flex-column">
 
