@@ -1,38 +1,56 @@
-<h1 class="mb-4 text-center">Mes parcours</h1>
+<div class="itineraries-index container py-3 py-md-4">
+  <h1 class="itineraries-index__title mb-4 text-center">Mes Parcours</h1>
 
-<div class="row row-cols-1 row-cols-md-3 g-4 mt-8">
-  <% @itineraries.each do |itinerary| %>
-    <div class="col">
-      <div class="card h-100 shadow-sm hover-shadow">
+  <% if @itineraries.any? %>
+    <div class="row itineraries-grid g-2 g-md-4">
+      <% @itineraries.each do |itinerary| %>
+        <div class="col-12 col-md-6">
+          <article class="event-card card h-100 shadow-sm border-0">
+            <div class="event-card__media">
+              <% cover_image = itinerary.events.first&.image_url %>
+              <% if cover_image.present? %>
+                <%= image_tag cover_image,
+                    class: "event-card__image",
+                    alt: itinerary.title %>
+              <% else %>
+                <div class="event-card__placeholder">Image indisponible</div>
+              <% end %>
+            </div>
 
-        <% if itinerary.events.any? %>
-          <% if itinerary.events.first.image_url.present? %>
-            <%= image_tag itinerary.events.first.image_url,
-                class: "card-img-top",
-                alt: itinerary.title,
-                style: "height: 200px; object-fit: cover;" %>
-            <% else %>
-              <%= image_tag "events/Alpes.jpg",
-                class: "card-img-top",
-                alt: itinerary.title,
-                style: "height: 200px; object-fit: cover;" %>
-            <% end %>
-        <% end %>
-        <div class="card-body d-flex flex-column">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title event-card__title mb-2"><%= itinerary.title %></h5>
 
-          <h5 class="card-title"><%= itinerary.title %></h5>
+              <% event_titles = itinerary.events.map(&:title).join(", ") %>
+              <p class="card-text event-card__description text-muted mb-3">
+                <%= event_titles.present? ? truncate(event_titles, length: 90) : "Aucun événement pour l’instant." %>
+              </p>
 
-          <p class="card-text">
-            <%= itinerary.events.map(&:title).join(", ") %>
-          </p>
+              <div class="event-card__chips mb-3">
+                <span class="event-chip">
+                  <%= pluralize(itinerary.events.size, "activité") %>
+                </span>
+                <% if itinerary.duration_max.present? %>
+                  <span class="event-chip">⏱ <%= itinerary.duration_max %>h max</span>
+                <% end %>
+                <% if itinerary.budget_max.present? %>
+                  <span class="event-chip event-chip--highlight">💰 €<%= itinerary.budget_max %></span>
+                <% end %>
+              </div>
 
-          <div class="mt-auto">
-            <%= link_to "Voir plus",
-                itinerary_path(itinerary),
-                class: "btn button-custom rounded-4 "%>
-          </div>
+              <div class="mt-auto">
+                <%= link_to "Voir plus",
+                    itinerary_path(itinerary),
+                    class: "btn itinerary-card__cta w-100" %>
+              </div>
+            </div>
+          </article>
         </div>
-      </div>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="itineraries-index__empty text-center mt-5">
+      <p class="text-muted mb-3">Aucun parcours pour le moment.</p>
+      <%= link_to "Voir mes chats", chats_path, class: "btn itinerary-card__cta px-4" %>
     </div>
   <% end %>
 </div>
