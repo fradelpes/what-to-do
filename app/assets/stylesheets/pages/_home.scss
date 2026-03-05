@@ -1,46 +1,52 @@
-.background-custom {
+.home-hero {
   background-color: #004aad;
+  min-height: calc(100vh - 120px);
+  padding: 60px 24px 40px;
 }
 
-.button-custom {
-  background-color:#ffde59;
-  color:#004aad ;
+.home-logo {
+  width: 160px;
 }
 
-.button-custom:hover {
+.home-title {
+  font-family: "Nunito", sans-serif;
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 0;
+}
+
+.home-tagline {
+  font-size: 1.1rem;
+  opacity: 0.8;
+  font-weight: 300;
+}
+
+.home-cta {
   background-color: #ffde59;
   color: #004aad;
+  font-weight: 700;
+  border: none;
+  border-radius: 50px;
+  padding: 12px 32px;
+  font-size: 1rem;
+
+  &:hover,
+  &:focus {
+    background-color: #fff;
+    color: #004aad;
+  }
 }
 
-footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-  background-color: #f8f9fa;
-  box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
-}
+@media (min-width: 768px) {
+  .home-logo {
+    width: 200px;
+  }
 
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-  background-color: #f8f9fa;
-  box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
-}
+  .home-title {
+    font-size: 2.4rem;
+  }
 
-body {
-  padding-bottom: 80px;
-}
-
-html, body {
-  // height: 100%;
-  margin: 0;
-}
-
-.logo-taille {
-  width: 250px;
+  .home-tagline {
+    font-size: 1.3rem;
+  }
 }
