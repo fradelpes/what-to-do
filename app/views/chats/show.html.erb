@@ -11,7 +11,15 @@
 
       <div class="message <%= message.role %>">
         <div class="message-bubble">
-          <%= message.content %>
+        <strong><%= message.role == "user" ? "Vous" : "Assistant" %></strong>
+
+        <% if message.content.include?("ID_ITINERARY:") %>
+          <% itinerary_id = message.content.match(/ID_ITINERARY:(\d+)/)&.captures&.first %>
+          <p>Votre itinéraire a été créé avec succès !</p>
+          <%= link_to "Voir les détails et les événements", "/itineraries/#{itinerary_id}", class: "btn btn-primary mt-2" %>
+        <% else %>
+          <p><%= message.content %></p>
+        <% end %>
         </div>
       </div>
 
