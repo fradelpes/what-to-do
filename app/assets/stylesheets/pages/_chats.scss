@@ -156,10 +156,10 @@
 
 .chat-itinerary-link {
   align-items: center;
-  background: #004aad;
-  border: 1px solid #004aad;
+  background: #ffde59;
+  border: 1px solid #ffde59;
   border-radius: 10px;
-  color: #ffde59;
+  color: #004aad;
   display: inline-flex;
   font-size: 0.82rem;
   font-weight: 600;
@@ -172,10 +172,10 @@
 
 .chat-itinerary-link:hover,
 .chat-itinerary-link:focus-visible {
-  background: #003d8f;
-  border-color: #003d8f;
+  background: #ffe478;
+  border-color: #ffe478;
   box-shadow: 0 0 0 3px rgba(255, 222, 89, 0.24);
-  color: #ffde59;
+  color: #003d8f;
   text-decoration: none;
 }
 
@@ -254,7 +254,7 @@
   border-radius: 16px;
   box-shadow: 0 10px 24px rgba(20, 32, 51, 0.12);
   position: fixed;
-  bottom: calc(68px + env(safe-area-inset-bottom));
+  bottom: calc(82px + env(safe-area-inset-bottom));
   left: 50%;
   transform: translateX(-50%);
   width: calc(100% - 20px);

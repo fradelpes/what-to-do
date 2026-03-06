@@ -1,7 +1,13 @@
+.home-page {
+  background-color: #004aad;
+}
+
 .home-hero {
   background-color: #004aad;
-  min-height: calc(100vh - 120px);
+  min-height: calc(100vh - 70px);
+  min-height: calc(100dvh - 70px);
   padding: 60px 24px 40px;
+  width: 100%;
 }
 
 .button-home-custom {
