@@ -1,42 +1,73 @@
-<div class="chat-container">
-
-  <% if @chat.messages.empty? %>
-    <div class="chat-empty">
-      <h1>Décris ce que tu cherches</h1>
+<div class="chat-page" data-controller="chat-ui" data-chat-ui-max-rows-value="3">
+  <div class="chat-container">
+    <div class="chat-header">
+      <h1 class="chat-header__title">Conversation</h1>
+      <p class="chat-header__subtitle">Assistant IA voyage</p>
     </div>
-  <% end %>
 
-  <div class="chat-messages">
-    <% @chat.messages.order(:created_at).each do |message| %>
+    <% if @chat.messages.empty? %>
+      <div class="chat-empty">
+        <h2>Décris ce que tu cherches</h2>
+        <p>Exemple: 2 jours, budget 200 euros, nature et food.</p>
+      </div>
+    <% end %>
 
-      <div class="message <%= message.role %>">
-        <div class="message-bubble">
-        <strong><%= message.role == "user" ? "Vous" : "Assistant" %></strong>
+    <div class="chat-messages" data-chat-ui-target="messages">
+      <% @chat.messages.order(:created_at).each do |message| %>
+        <div class="message <%= message.role %>">
+          <div class="message-bubble">
+            <p class="message-author"><%= message.role == "user" ? "Vous" : "Assistant" %></p>
 
-        <% if message.content.include?("ID_ITINERARY:") %>
-          <% itinerary_id = message.content.match(/ID_ITINERARY:(\d+)/)&.captures&.first %>
-          <p>Votre itinéraire a été créé avec succès !</p>
-          <%= link_to "Voir les détails et les événements", "/itineraries/#{itinerary_id}", class: "btn btn-primary mt-2" %>
-        <% else %>
-          <p><%= message.content %></p>
-        <% end %>
+            <% if message.content.include?("ID_ITINERARY:") %>
+              <% itinerary_id = message.content.match(/ID_ITINERARY:(\d+)/)&.captures&.first %>
+              <div class="chat-itinerary-card" role="group" aria-label="Itinéraire créé">
+                <div class="chat-itinerary-card__header">
+                  <i class="fa-solid fa-route" aria-hidden="true"></i>
+                  <p class="chat-itinerary-card__title">Itinéraire prêt</p>
+                </div>
+                <p class="chat-itinerary-card__text">Ton parcours personnalisé est disponible.</p>
+                <%= link_to itinerary_path(itinerary_id), class: "chat-itinerary-link", aria: { label: "Ouvrir l'itinéraire créé" } do %>
+                  <span>Ouvrir l'itinéraire</span>
+                  <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                <% end %>
+              </div>
+            <% else %>
+              <p class="message-content"><%= message.content %></p>
+            <% end %>
+
+            <p class="message-time"><%= message.created_at.in_time_zone.strftime("%H:%M") %></p>
+          </div>
+        </div>
+      <% end %>
+
+      <div class="typing-indicator" data-chat-ui-target="typingIndicator" role="status" aria-live="polite" hidden>
+        <div class="typing-indicator__bubble">
+          <span class="typing-indicator__text">Assistant écrit</span>
+          <span class="typing-indicator__dots" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </span>
         </div>
       </div>
-
-    <% end %>
+    </div>
   </div>
 
-</div>
+  <div class="chat-input">
+    <%= form_with model: [@chat, Message.new],
+      class: "chat-form",
+      data: { chat_ui_target: "form", action: "submit->chat-ui#handleSubmit" } do |f| %>
 
-<div class="chat-input">
-  <%= form_with model: [@chat, Message.new], class: "chat-form" do |f| %>
+      <%= f.label :content, "Votre message", class: "visually-hidden" %>
+      <%= f.text_area :content,
+        placeholder: "Poser une question",
+        class: "chat-text-input",
+        rows: 1,
+        maxlength: 1200,
+        required: true,
+        data: { chat_ui_target: "input", action: "input->chat-ui#handleInput" } %>
 
-    <%= f.text_field :content,
-      placeholder: "Poser une question",
-      class: "chat-text-input",
-      autocomplete: "off" %>
-
-    <%= f.submit "Envoyer", class: "send-button" %>
-
-  <% end %>
+      <%= f.button type: "submit", class: "send-button", data: { chat_ui_target: "sendButton" }, aria: { label: "Envoyer le message" } do %>
+        <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+      <% end %>
+    <% end %>
+  </div>
 </div>
