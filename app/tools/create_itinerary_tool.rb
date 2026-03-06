@@ -20,38 +20,47 @@ class CreateItineraryTool < RubyLLM::Tool
     )
 
     begin
-      events = JSON.parse(events_json)
+      events = if events_json.is_a?(String)
+                 JSON.parse(events_json)
+               else
+                 events_json
+               end
 
-      # SI L'IA N'A PAS GÉNÉRÉ D'ÉVÉNEMENTS, crée-les par défaut
       if events.empty?
-        puts "DEBUG: events vide, génération par défaut"
         events = generate_default_events(budget_max)
       end
 
       events.each do |event|
-        image_url = fetch_image_from_unsplash(event["title"])
-
         itinerary.events.create!(
           title: event["title"] || "Activité",
           description: event["description"] || "",
           location: event["location"] || "",
           price: event["price"].to_f,
           duration: event["duration"].to_i,
-          category: event["category"] || "autre",
-          image_url: image_url
+          category: event["category"] || "autre"
         )
       end
     rescue JSON::ParserError => e
       Rails.logger.error("JSON parsing error: #{e.message}")
+      default_events = generate_default_events(budget_max)
+      default_events.each do |event|
+        itinerary.events.create!(
+          title: event["title"],
+          description: event["description"],
+          location: event["location"],
+          price: event["price"].to_f,
+          duration: event["duration"].to_i,
+          category: event["category"]
+        )
+      end
     end
 
-    itinerary.id.to_s
+    "Itinéraire créé avec ID: #{itinerary.id}"
   end
 
   private
 
   def generate_default_events(budget_max)
-    # Génère des événements par défaut si l'IA n'en a pas créé
     [
       {
         "title" => "Exploration locale",
@@ -68,35 +77,7 @@ class CreateItineraryTool < RubyLLM::Tool
         "price" => (budget_max * 0.4).round(2),
         "duration" => 90,
         "category" => "food"
-      },
-      {
-        "title" => "Promenade",
-        "description" => "Balade à pied pour découvrir l'atmosphère locale",
-        "location" => "Rues de la région",
-        "price" => 0,
-        "duration" => 120,
-        "category" => "nature"
       }
     ]
-  end
-
-  def fetch_image_from_unsplash(query)
-    require 'net/http'
-    require 'json'
-
-    api_key = ENV.fetch('UNSPLASH_API_KEY', nil)
-    url = URI("https://api.unsplash.com/search/photos?query=#{ERB::Util.url_encode(query)}&client_id=#{api_key}&per_page=1")
-
-    response = Net::HTTP.get_response(url)
-    data = JSON.parse(response.body)
-
-    if data['results'].any?
-      data['results'].first['urls']['regular']
-    else
-      nil
-    end
-  rescue StandardError => e
-    Rails.logger.error("Unsplash API error: #{e.message}")
-    nil
   end
 end
