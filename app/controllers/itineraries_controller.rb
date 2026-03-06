@@ -1,7 +1,7 @@
 class ItinerariesController < ApplicationController
 
   def index
-    @itineraries = Itinerary.all
+    @itineraries = Itinerary.order(created_at: :desc)
   end
 
   def show
