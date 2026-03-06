@@ -26,11 +26,15 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="d-flex flex-column min-vh-100">
-
-  <div class="container flex-grow-1">
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+  <% home_page = current_page?(root_path) %>
+  <body class="<%= ['d-flex', 'flex-column', 'min-vh-100', ('home-page' if home_page)].compact.join(' ') %>">
+  <div class="<%= home_page ? 'container-fluid px-0 flex-grow-1' : 'container flex-grow-1' %>">
+    <% if notice.present? %>
+      <p class="notice"><%= notice %></p>
+    <% end %>
+    <% if alert.present? %>
+      <p class="alert"><%= alert %></p>
+    <% end %>
 
     <%= yield %>
   </div>
