@@ -1,15 +1,18 @@
 <footer class="bg-light py-1 mt-auto fixed-bottom">
-<div class="container footer-container d-flex justify-content-center gap-4">
+<footer class="bg-light py-1 mt-auto fixed-bottom footer-custom">
   <%= link_to root_path, class: "btn btn-footer" do %>
-      <i class="fa-solid fa-house"></i>
+      <i class="<%= current_page?(root_path) ? 'bi bi-house-door-fill' : 'bi bi-house-door' %>"></i>
     <% end %>
 
-    <%= button_to chats_path, class: "btn btn-footer" do %>
-      <i class="fa-solid fa-comment"></i>
+
+    <%= link_to chats_path, data: { turbo_method: :post }, class: "btn btn-footer" do %>
+      <i class="<%= controller_name == 'chats' ? 'bi bi-chat-fill' : 'bi bi-chat' %>"></i>
     <% end %>
+
+
 
     <%= link_to itineraries_path, class: "btn btn-footer" do %>
-      <i class="fa-solid fa-bookmark"></i>
+      <i class="<%= current_page?(itineraries_path) ? 'bi bi-bookmark-fill' : 'bi bi-bookmark' %>"></i>
     <% end %>
 
 
